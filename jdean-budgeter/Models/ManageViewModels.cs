@@ -14,6 +14,24 @@ namespace jdean_budgeter.Models
         public bool BrowserRemembered { get; set; }
     }
 
+    public class UpdateInformationViewModel
+    {
+        //[Display(Name = "Current First Name")]
+        //public string FirstName { get; set; }
+
+        [Display(Name = "Updated First Name")]
+        public string NewFirstName { get; set; }
+
+        //[Display(Name = "Current Last Name")]
+        //public string LastName { get; set; }
+
+        [Display(Name = "Updated Last Name")]
+        public string NewLastName { get; set; }
+
+        [Display(Name = "Updated Profile Pic")]
+        public string NewProfilePic { get; set; }
+    }
+
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }

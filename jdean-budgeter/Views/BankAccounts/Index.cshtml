@@ -1,0 +1,67 @@
+﻿@model IEnumerable<jdean_budgeter.Models.CodeFirst.BankAccount>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="col sm-4">
+    <div class="panel panel-border-color panel-border-color-primary">
+        <div class="panel-heading">
+            My Accounts
+            <span style="float:right"> <a href="@Url.Action("Create", "BankAccounts")" class="btn btn-rounded btn-primary"><span class="icon s7-plus"> </span> Add New</a></span>
+        </div>
+        <div class="panel-body">
+            <p>
+                <table class="table">
+
+                    <tr>
+                        <td>
+                          Account Number
+                        </td>
+                        <td>
+                           Account Name
+                        </td>
+                        <td>
+                            What's it for?
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayNameFor(model => model.Balance)
+                        </td>
+                        @*<th></th>*@
+                    </tr>
+
+                    @foreach (var item in Model)
+            {
+                        <tr>
+                            <td>000272 @Html.DisplayFor(modelitem => item.Id)</td>
+                            <td>
+
+
+                                <a href="@Url.Action("Details", new { id = item.Id })">@Html.DisplayFor(modelItem => item.Name)</a>
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+
+
+                            <td>
+                                $ @Html.DisplayFor(modelItem => item.Balance)
+                            </td>
+                            @*<td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                </td>*@
+                        </tr>
+                    }
+
+                </table>
+            </p>
+        </div>
+    </div>
+</div>

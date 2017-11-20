@@ -1,0 +1,76 @@
+﻿@model IEnumerable<jdean_budgeter.Models.CodeFirst.Budget>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.mySpend</h2>
+@*<div class="col-md-4">
+        <div class="widget">
+            <div class="widget-head">
+                <div class="tools"><span class="icon s7-cloud-download"></span><span class="icon s7-refresh-2"></span></div><span class="title">Pie Chart</span>
+            </div>
+            <div class="widget-chart-container">
+                <div id="pie-chart4" style="height: 200px;">
+                    <div id="placeholder" style="width:600px;height:300px"></div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<div class="col sm-4">
+    <div class="panel panel-border-color panel-border-color-primary">
+        <div class="panel-heading">
+            My Budgets
+            <span style="float:right"> <a href="@Url.Action("Create", "Budgets")" class="btn btn-rounded btn-primary"><span class="icon s7-plus"> </span> Add New</a></span>
+        </div>
+        <div class="panel-body">
+           
+            <table class="table">
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </td>
+                    <td>
+                        Opening Amount
+                    </td>
+                    <td>
+                        Amount Remaining
+                    </td>
+                    @*<th>Category
+                        </th>*@
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OpeningAmt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        @*<td>@Html.DisplayFor(modelItem => item.Category.Name)</td>*@
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            </div>
+        </div>
+    </div>
+            @section scripts{
+                <script src="~/assets/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
+                <script src="~/assets/lib/jquery-flot/jquery.flot.pie.js" type="text/javascript"></script>
+                <script type="text/javascript">
+
+
+                </script>
+            }

@@ -1,7 +1,127 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+@{
+    Layout = null;
+}
 
-<p>Use this area to provide additional information.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="~/assets/img/faviconP.ico">
+    <title>Piglet</title>
+    <link href="~/assets/css/pink-love.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/assets/lib/stroke-7/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/assets/lib/perfect-scrollbar/css/perfect-scrollbar.min.css" />
+    @*<link rel="stylesheet" href="~/assets/css/app.css" type="text/css" />*@
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-full-color panel-full-color-primary">
+
+                    <div class="panel-heading">
+                        <h1 style="text-align:center">
+                            <br />
+                            <a href="@Url.Action("Login","Account")">  <img src="~/assets/img/pigletsmall.png" /></a>
+                        </h1>
+                    </div>
+                    <br />
+                    <div class="panel-body">
+                        <h3 style="text-align:center">Piglet is a family-friendly, mobile-responsive budget tracking application.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Dark Pricing Tables-->
+        <div class="row pricing-tables">
+            <div class="col-md-3">
+                <div class="pricing-table pricing-table-dark">
+                    <div class="pricing-table-title">Create Household</div>
+                    <div class="pricing-table-price">Households share account and budget information</div>
+                    @*<div class="pricing-table-frecuency">month</div>*@
+                    <div class="panel-divider panel-divider-xl"></div>
+                    <ul class="pricing-table-features">
+                        <li><b>Invite</b> new household members</li>
+                        <li><b>Join</b> a household when invited</li>
+                        <li><b>Leave</b> household at will</li>
+                    </ul><a href="@Url.Action("Login","Account")" class="btn btn-outline-primary">Go!</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="pricing-table pricing-table-dark">
+                    <div class="pricing-table-title">Add Budgets</div>
+                    <div class="pricing-table-price">Create budgets for common spending categories</div>
+                    @* <div class="pricing-table-frecuency">month</div>*@
+                    <div class="panel-divider panel-divider-xl"></div>
+                    <ul class="pricing-table-features">
+                        <li><b>Customize</b> budget categories</li>
+                        <li><b>Visualize</b> data with charts</li>
+                        <li><b>Track</b> spending per category</li>
+                    </ul><a href="@Url.Action("Login","Account")" class="btn btn-outline-primary">Go!</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="pricing-table pricing-table-dark">
+                    <div class="pricing-table-title">Log Transactions</div>
+                    <div class="pricing-table-price">Transactions affect balance using a debit or credit boolean</div>
+                    @* <div class="pricing-table-frecuency">month</div>*@
+                    <div class="panel-divider panel-divider-xl"></div>
+                    <ul class="pricing-table-features">
+                        <li><b>Add</b> income like salary</li>
+                        <li><b>Calculate</b> account balance </li>
+                        <li><b>Categorize</b> transactions </li>
+                    </ul><a href="@Url.Action("Login","Account")" class="btn btn-outline-primary">Go!</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="pricing-table pricing-table-dark">
+                    <div class="pricing-table-title">Tech</div>
+                    <div class="pricing-table-price">Created using Visual Studio 2017 and Microsoft SQL Server</div>
+                    @*<div class="pricing-table-frecuency">month</div>*@
+                    <div class="panel-divider panel-divider-xl"></div>
+                    <ul class="pricing-table-features">
+                        <li><b>MVC</b> Design Pattern</li>
+                        <li><b>C#</b> Strongly-typed language</li>
+                        <li><b>SQL</b> Codefirst database migration</li>
+                    </ul><a href="@Url.Action("Login","Account")" class="btn btn-outline-primary">Go!</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="panel panel-full-color panel-full-color-primary">
+                <div class="panel-body">
+                    
+                    <p style="text-align:center">
+                        <span class="usage-icon"><i class="icon s7-piggy"></i></span>
+                    </p>
+                    <p style="text-align:center">     © Jessica Dean @DateTime.Now.Year</p> 
+                       
+                    
+                    
+                </div> 
+            </div>
+        </div>
+    </div>
+    <script src="~/assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="~/assets/lib/tether/js/tether.min.js" type="text/javascript"></script>
+    <script src="~/assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <script src="~/assets/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/assets/js/app.js" type="text/javascript"></script>
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //initialize the javascript
+            App.init();
+        });
+
+    </script>
+</body>
+</html>

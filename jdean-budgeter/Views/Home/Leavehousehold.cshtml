@@ -1,0 +1,39 @@
+﻿@model jdean_budgeter.Models.CodeFirst.Household
+
+@{
+    ViewBag.Title = "Leavehousehold";
+}
+
+<h2>Leavehousehold</h2>
+
+<div>
+    <h4>Budget</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Users)
+        </dt>
+
+   
+    
+
+    </dl>
+
+    @using (Html.BeginForm("Leavehousehold", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Leave" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

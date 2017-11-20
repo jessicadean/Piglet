@@ -1,0 +1,74 @@
+﻿@model jdean_budgeter.Models.CodeFirst.Transaction
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpenseId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpenseId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PmtDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PmtDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

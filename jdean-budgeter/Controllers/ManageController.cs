@@ -7,12 +7,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using jdean_budgeter.Models;
+using System.IO;
+using System.Data.Entity;
 
 namespace jdean_budgeter.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -213,6 +216,74 @@ namespace jdean_budgeter.Controllers
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
 
+        //GET: /Manage/UpdateInformation
+        public ActionResult UpdateInformation()
+        {
+            
+
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            UpdateInformationViewModel model = new UpdateInformationViewModel();
+            model.NewFirstName = user.FirstName;
+            model.NewLastName = user.LastName;
+            //model.NewProfilePic = user.ProfilePic;
+
+            return View(model);
+        }
+
+        //POST: /Manage/UpdateInformation
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateInformation(UpdateInformationViewModel model, HttpPostedFileBase image)
+        {
+            var pPic = model.NewProfilePic;
+
+            if (image != null && image.ContentLength > 0)
+            {
+                var ext = Path.GetExtension(image.FileName).ToLower();
+                if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".gif" && ext != ".bmp")
+                    ModelState.AddModelError("image", "Invalid Format.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (image != null)
+                {
+                    //Counter
+                    var num = 0;
+                    //Gets Filename without the extension
+                    var fileName = Path.GetFileNameWithoutExtension(image.FileName);
+                    pPic = Path.Combine("/Assets/ProfilePics/", fileName + Path.GetExtension(image.FileName));
+                    //Checks if pPic matches any of the current attachments, 
+                    //if so it will loop and add a (number) to the end of the filename
+                    while (db.Users.AsNoTracking().Any(u => u.ProfilePic == pPic))
+                    {
+                        //Sets "filename" back to the default value
+                        fileName = Path.GetFileNameWithoutExtension(image.FileName);
+                        //Add's parentheses after the name with a number ex. filename(4)
+                        fileName = string.Format(fileName + "(" + ++num + ")");
+                        //Makes sure pPic gets updated with the new filename so it could check
+                        pPic = Path.Combine("/Assets/ProfilePics/", fileName + Path.GetExtension(image.FileName));
+                    }
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Assets/ProfilePics/"), fileName + Path.GetExtension(image.FileName)));
+                }
+
+                var defaultProfilePic = "/Assets/images/avatar.png";
+                if (String.IsNullOrWhiteSpace(pPic))
+                {
+                    pPic = defaultProfilePic;
+                }
+
+                var user = UserManager.FindById(User.Identity.GetUserId());
+                user.FirstName = model.NewFirstName;
+                user.LastName = model.NewLastName;
+                //user.ProfilePic = pPic;
+                UserManager.Update(user);
+
+                return RedirectToAction("Index", new { Message = ManageMessageId.UpdateInformationSuccess });
+            }
+
+            return View(model);
+        }
         //
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
@@ -381,6 +452,7 @@ namespace jdean_budgeter.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
+            UpdateInformationSuccess,
             Error
         }
 
