@@ -206,6 +206,7 @@ namespace jdean_budgeter.Controllers
                 var currentUserHId = User.Identity.GetHouseholdId();
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName,
                     LastName = model.LastName, HouseholdId = currentUserHId};
+                //if (user.UserName == ApplicationUser.Any
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

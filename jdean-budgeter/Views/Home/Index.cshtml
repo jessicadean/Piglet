@@ -3,11 +3,7 @@
 @using System.Security.Claims
 @using jdean_budgeter.Models.Helpers;
 
-@*<div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>*@
+
 <link href="~/assets/lib/datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
 <div class="row">
     <div class="col-md-6">
@@ -36,9 +32,7 @@
                     </tbody>
                 </table>
             </div>
-            @*<div class="earnings-chart">
-                    <div id="earnings-chart" style="height: 156px;"></div>
-                </div>*@
+          
         </div>
     </div>
     <div class="col-md-3">
@@ -46,7 +40,7 @@
             <div class="usage-head">
                 <span class="usage-head-title">Expenses</span>
 
-                <div class="usage-head-tools">@*<span class="icon s7-refresh-2"></span>*@</div>
+                <div class="usage-head-tools"></div>
             </div>
             <div class="usage-resume">
                 <div class="usage-data"><span style="font-size:24px">$@ViewBag.Expenses</span><span data-toggle="counter" data-end="73.6" data-decimals="1" data-suffix="%" class="usage-counter"></span><span class="usage-title">Total Expenses</span><span class="usage-detail"></span></div>
